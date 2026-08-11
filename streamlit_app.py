@@ -29,6 +29,11 @@ from tavily import TavilyClient
 
 st.set_page_config(page_title="City Assistant", page_icon="🌆", layout="centered")
 
+for key in ["MISTRAL_API_KEY", "OPENWEATHER_API_KEY", "TAVILY_API_KEY"]:
+    if key not in os.environ and key in st.secrets:
+        os.environ[key] = st.secrets[key]
+
+
 # ============================================================
 # Tools (unchanged from Agents.py)
 # ============================================================
